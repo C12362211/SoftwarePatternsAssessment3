@@ -15,40 +15,30 @@ import oldCode.Menu;
 
 public class AddListener implements ActionListener{
 	
-		//Menu menu = new Menu();
 		JFrame f;
-		String pps;
-		String firstName;
-		String surname;
-		String dob;
 		String password;
 		Menu menu;
 
+		private ContinueListener cl;
 		
-		
-		public AddListener(String pps, String firstName, String surname, String dob, Menu menu){
-			this.pps=pps;
-			this.firstName=firstName;
-			this.surname=surname;
-			this.dob=dob;
+		public AddListener(Menu menu, ContinueListener cl){
 			this.menu=menu;
-			
+			this.cl = cl;
 		}
 		
-		String CustomerID = "ID" + pps;
 
 			public void actionPerformed(ActionEvent e) {
-				//f1.dispose();
-
+				String customerID = "ID" + cl.getPpsTextField().getText();
+				String pps = cl.getPpsTextField().getText();
+				String firstName = cl.getFirstNameTextField().getText();
+				String surname = cl.getSurnameTextField().getText();
+				String dob = cl.getDobTextField().getText();
+				System.out.println(customerID + "£££");
 				boolean loop = true;
 				while (loop) {
 					password = JOptionPane.showInputDialog(f, "Enter 7 character Password;");
 
-					if (password.length() != 7) // Making
-												// sure
-												// password
-												// is 7
-												// characters
+					if (password.length() != 7) // Making sure password is 7 characters
 					{
 						JOptionPane.showMessageDialog(null, null,
 								"Password must be 7 charatcers long", JOptionPane.OK_OPTION);
@@ -56,18 +46,17 @@ public class AddListener implements ActionListener{
 						loop = false;
 					}
 				}
-
+				customerID = "ID" + pps;
 				ArrayList<CustomerAccount> accounts = new ArrayList<CustomerAccount>();
-				Customer customer = new Customer(pps, surname, firstName, dob, CustomerID, password,
+				Customer customer = new Customer(pps, surname, firstName, dob, customerID, password,
 						accounts);
 
-				Menu.getCustomerList().add(customer);
+				menu.getCustomerList().add(customer);
 
 				JOptionPane.showMessageDialog(f,
-						"CustomerID = " + CustomerID + "\n Password = " + password,
+						"CustomerID = " + customerID + "\n Password = " + password,
 						"Customer created.", JOptionPane.INFORMATION_MESSAGE);
 				menu.menuStart();
-				//f.dispose();
 			}
 		;
 	}

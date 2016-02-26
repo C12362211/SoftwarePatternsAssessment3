@@ -69,6 +69,9 @@ public class Customer {
 	
 	public ArrayList<CustomerAccount> getAccounts()
 	{
+		if(accounts==null){
+			this.accounts=new ArrayList<CustomerAccount>();
+		}
 		return this.accounts;
 	}
 	
