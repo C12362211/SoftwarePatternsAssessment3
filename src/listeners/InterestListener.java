@@ -34,7 +34,7 @@ public class InterestListener implements ActionListener{
 	
 	public void actionPerformed(ActionEvent ae) {
 
-		boolean loop = true;
+		boolean applyInterest = true;
 
 		boolean found = false;
 
@@ -45,7 +45,7 @@ public class InterestListener implements ActionListener{
 			menu.admin();
 
 		} else {
-			while (loop) {
+			while (applyInterest) {
 				Object customerID = JOptionPane.showInputDialog(f,
 						"Customer ID of Customer You Wish to Apply Interest to:");
 
@@ -54,7 +54,7 @@ public class InterestListener implements ActionListener{
 					if (aCustomer.getCustomerID().equals(customerID)) {
 						found = true;
 						customer = aCustomer;
-						loop = false;
+						applyInterest = false;
 					}
 				}
 
@@ -62,15 +62,14 @@ public class InterestListener implements ActionListener{
 					int reply = JOptionPane.showConfirmDialog(null, null, "User not found. Try again?",
 							JOptionPane.YES_NO_OPTION);
 					if (reply == JOptionPane.YES_OPTION) {
-						loop = true;
+						applyInterest = true;
 					} else if (reply == JOptionPane.NO_OPTION) {
 						f.dispose();
-						loop = false;
+						applyInterest = false;
 
 						menu.admin();
 					}
 				} else {
-					//f.dispose();
 					f = new JFrame("Administrator Menu");
 					f.setSize(400, 300);
 					f.setLocation(200, 200);
@@ -123,26 +122,15 @@ public class InterestListener implements ActionListener{
 							public void actionPerformed(ActionEvent ae) {
 								String euro = "\u20ac";
 								double interest = 0;
-								boolean loop = true;
+								boolean applyInterest = true;
 
-								while (loop) {
+								while (applyInterest) {
 									String interestString = JOptionPane.showInputDialog(f,
-											"Enter interest percentage you wish to apply: \n NOTE: Please enter a numerical value. (with no percentage sign) \n E.g: If you wish to apply 8% interest, enter '8'");// the
-																																																					// isNumeric
-																																																					// method
-																																																					// tests
-																																																					// to
-																																																					// see
-																																																					// if
-																																																					// the
-																																																					// string
-																																																					// entered
-																																																					// was
-																																																					// numeric.
-									if (Menu.isNumeric(interestString)) {
+											"Enter interest percentage you wish to apply: \n NOTE: Please enter a numerical value. (with no percentage sign) \n E.g: If you wish to apply 8% interest, enter '8'");
+									if (Menu.isNumeric(interestString)) {// the isNumeric method tests to see if the string entered was numeric
 
 										interest = Double.parseDouble(interestString);
-										loop = false;
+										applyInterest = false;
 
 										acc.setBalance(
 												acc.getBalance() + (acc.getBalance() * (interest / 100)));

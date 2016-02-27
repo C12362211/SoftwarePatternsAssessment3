@@ -19,24 +19,22 @@ import oldCode.Customer;
 import oldCode.CustomerAccount;
 import oldCode.Menu;
 
-public class SummaryListener implements ActionListener{
-	
+public class SummaryListener implements ActionListener {
+
 	JFrame f;
 	Menu menu;
 	Customer customer;
 	CustomerAccount acc;
 	Container content;
-	
-	public SummaryListener(Menu menu, Customer customer, CustomerAccount acc){
-		this.menu=menu;
-		this.customer=customer;
-		this.acc=acc;
-		
+
+	public SummaryListener(Menu menu, Customer customer, CustomerAccount acc) {
+		this.menu = menu;
+		this.customer = customer;
+		this.acc = acc;
+
 	}
 
-	
 	public void actionPerformed(ActionEvent ae) {
-		//f.dispose();
 
 		f = new JFrame("Summary of Transactions");
 		f.setSize(400, 700);
@@ -66,35 +64,24 @@ public class SummaryListener implements ActionListener{
 		JScrollPane scrollPane = new JScrollPane(textArea);
 		textPanel.add(scrollPane);
 
-		for (int a = 0; a < menu.getCustomerList().size(); a++)// For each
-														// customer, for
-														// each account,
-														// it displays
-														// each
-														// transaction.
+		for (int a = 0; a < menu.getCustomerList().size(); a++)// For each customer, for each account, it displays each transaction
 		{
 			for (int b = 0; b < menu.getCustomerList().get(a).getAccounts().size(); b++) {
 				acc = menu.getCustomerList().get(a).getAccounts().get(b);
-				for (int c = 0; c < menu.getCustomerList().get(a).getAccounts().get(b).getTransactionList().size(); c++) {
+				for (int c = 0; c < menu.getCustomerList().get(a).getAccounts().get(b).getTransactionList()
+						.size(); c++) {
 
 					textArea.append(acc.getTransactionList().get(c).toString());
-					// Int total =
-					// acc.getTransactionList().get(c).getAmount(); //I
-					// was going to use this to keep a running total but
-					// I couldnt get it working.
-
+					// Int total = acc.getTransactionList().get(c).getAmount();I was going to use this to keep a running total but I couldnt get it working.
 				}
 			}
 		}
 
 		textPanel.add(textArea);
-		//content.removeAll();
 
 		Container content = f.getContentPane();
 		content.setLayout(new GridLayout(1, 1));
-		// content.add(label1);
 		content.add(textPanel);
-		// content.add(returnPanel);
 
 		returnButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {

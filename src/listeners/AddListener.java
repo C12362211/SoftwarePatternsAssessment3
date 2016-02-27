@@ -34,8 +34,8 @@ public class AddListener implements ActionListener{
 				String surname = cl.getSurnameTextField().getText();
 				String dob = cl.getDobTextField().getText();
 				System.out.println(customerID + "£££");
-				boolean loop = true;
-				while (loop) {
+				boolean enterPassword = true;
+				while (enterPassword) {
 					password = JOptionPane.showInputDialog(f, "Enter 7 character Password;");
 
 					if (password.length() != 7) // Making sure password is 7 characters
@@ -43,7 +43,7 @@ public class AddListener implements ActionListener{
 						JOptionPane.showMessageDialog(null, null,
 								"Password must be 7 charatcers long", JOptionPane.OK_OPTION);
 					} else {
-						loop = false;
+						enterPassword = false;
 					}
 				}
 				customerID = "ID" + pps;

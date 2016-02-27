@@ -35,8 +35,6 @@ public class ViewDetailListener implements ActionListener{
 	
 	public void actionPerformed(ActionEvent ae) {
 
-		//f.dispose();
-
 		f = new JFrame("Customer Menu");
 		f.setSize(400, 300);
 		f.setLocation(200, 200);

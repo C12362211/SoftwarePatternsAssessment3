@@ -32,7 +32,6 @@ public class AccountListener implements ActionListener{
 	}
 	
 	public void actionPerformed(ActionEvent ae) {
-		//f.dispose();
 
 		if (menu.getCustomerList().isEmpty()) {
 			JOptionPane.showMessageDialog(f, "There are no customers yet!", "Oops!",
@@ -40,11 +39,11 @@ public class AccountListener implements ActionListener{
 			f.dispose();
 			menu.admin();
 		} else {
-			boolean loop = true;
+			boolean addAccount = true;
 
 			boolean found = false;
 
-			while (loop) {
+			while (addAccount) {
 				Object customerID = JOptionPane.showInputDialog(f,
 						"Customer ID of Customer You Wish to Add an Account to:");
 
@@ -60,15 +59,15 @@ public class AccountListener implements ActionListener{
 					int reply = JOptionPane.showConfirmDialog(null, null, "User not found. Try again?",
 							JOptionPane.YES_NO_OPTION);
 					if (reply == JOptionPane.YES_OPTION) {
-						loop = true;
+						addAccount = true;
 					} else if (reply == JOptionPane.NO_OPTION) {
 						f.dispose();
-						loop = false;
+						addAccount = false;
 
 						menu.admin();
 					}
 				} else {
-					loop = false;
+					addAccount = false;
 					// a combo box in an dialog box that asks the admin
 					// what type of account they wish to create
 					// (deposit/current)
@@ -81,13 +80,7 @@ public class AccountListener implements ActionListener{
 						boolean valid = true;
 						double balance = 0;
 						String number = String.valueOf("C" + (menu.getCustomerList().indexOf(customer) + 1) * 10
-								+ (customer.getAccounts().size() + 1));// this
-																		// simple
-																		// algorithm
-																		// generates
-																		// the
-																		// account
-																		// number
+								+ (customer.getAccounts().size() + 1));// this simple algorithm generates the account number
 						ArrayList<AccountTransaction> transactionList = new ArrayList<AccountTransaction>();
 						int randomPIN = (int) (Math.random() * 9000) + 1000;
 						String pin = String.valueOf(randomPIN);
@@ -104,7 +97,6 @@ public class AccountListener implements ActionListener{
 						JOptionPane.showMessageDialog(f, "Account number = " + number + "\n PIN = " + pin,
 								"Account created.", JOptionPane.INFORMATION_MESSAGE);
 						System.out.println("pin " + pin);
-						//f.dispose();
 						menu.admin();
 					}
 
@@ -113,13 +105,8 @@ public class AccountListener implements ActionListener{
 
 						double balance = 0, interest = 0;
 						String number = String.valueOf("D" + (menu.getCustomerList().indexOf(customer) + 1) * 10
-								+ (customer.getAccounts().size() + 1));// this
-																		// simple
-																		// algorithm
-																		// generates
-																		// the
-																		// account
-																		// number
+								+ (customer.getAccounts().size() + 1));// this simple algorithm generates the account number
+						
 						ArrayList<AccountTransaction> transactionList = new ArrayList<AccountTransaction>();
 
 						CustomerDepositAccount deposit = new CustomerDepositAccount(interest, number, balance,
@@ -129,7 +116,6 @@ public class AccountListener implements ActionListener{
 						JOptionPane.showMessageDialog(f, "Account number = " + number, "Account created.",
 								JOptionPane.INFORMATION_MESSAGE);
 
-						//f.dispose();
 						menu.admin();
 					}
 

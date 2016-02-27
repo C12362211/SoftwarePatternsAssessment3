@@ -52,8 +52,7 @@ public class ContinueListener implements ActionListener{
 	public void actionPerformed(ActionEvent ae) {
 		String user = userType.getSelection().getActionCommand();
 
-		// if user selects NEW
-		// CUSTOMER--------------------------------------------------------------------------------------
+		// if user selects NEW CUSTOMER
 		if (user.equals("New Customer")) {
 			f.dispose();
 			f1 = new JFrame("Create New Customer");

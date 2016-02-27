@@ -1,6 +1,5 @@
 package listeners;
 
-import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -8,21 +7,20 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import oldCode.Customer;
-import oldCode.CustomerAccount;
 import oldCode.Menu;
 
-public class DeleteCustomerListener implements ActionListener{
-	
+public class DeleteCustomerListener implements ActionListener {
+
 	JFrame f;
 	Menu menu;
 	Customer customer;
-	
-	public DeleteCustomerListener(Menu menu, Customer customer){
-		this.menu=menu;
-		this.customer=customer;
-		
+
+	public DeleteCustomerListener(Menu menu, Customer customer) {
+		this.menu = menu;
+		this.customer = customer;
+
 	}
-	
+
 	public void actionPerformed(ActionEvent ae) {
 		boolean found = true;
 
@@ -32,8 +30,7 @@ public class DeleteCustomerListener implements ActionListener{
 			menu.admin();
 		} else {
 			{
-				Object customerID = JOptionPane.showInputDialog(f,
-						"Customer ID of Customer You Wish to Delete:");
+				Object customerID = JOptionPane.showInputDialog(f, "Customer ID of Customer You Wish to Delete:");
 
 				for (Customer aCustomer : menu.getCustomerList()) {
 

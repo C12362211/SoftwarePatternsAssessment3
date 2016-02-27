@@ -45,7 +45,7 @@ public class EditCustomerListener implements ActionListener{
 
 	public void actionPerformed(ActionEvent ae) {
 
-		boolean loop = true;
+		boolean enterID = true;
 
 		boolean found = false;
 
@@ -57,7 +57,7 @@ public class EditCustomerListener implements ActionListener{
 
 		} else {
 
-			while (loop) {
+			while (enterID) {
 				Object customerID = JOptionPane.showInputDialog(f, "Enter Customer ID:");
 
 				for (Customer aCustomer : menu.getCustomerList()) {
@@ -72,22 +72,19 @@ public class EditCustomerListener implements ActionListener{
 					int reply = JOptionPane.showConfirmDialog(null, null, "User not found. Try again?",
 							JOptionPane.YES_NO_OPTION);
 					if (reply == JOptionPane.YES_OPTION) {
-						loop = true;
+						enterID = true;
 					} else if (reply == JOptionPane.NO_OPTION) {
 						f.dispose();
-						loop = false;
+						enterID = false;
 
 						menu.admin();
 					}
 				} else {
-					loop = false;
+					enterID = false;
 				}
 
 			}
-
-			//f.dispose();
-
-			//f.dispose();
+			
 			f = new JFrame("Administrator Menu");
 			f.setSize(400, 300);
 			f.setLocation(200, 200);
@@ -142,7 +139,6 @@ public class EditCustomerListener implements ActionListener{
 
 			cancelPanel.add(cancelButton, BorderLayout.SOUTH);
 			cancelPanel.add(saveButton, BorderLayout.SOUTH);
-			// content.removeAll();
 			Container content = f.getContentPane();
 			content.setLayout(new GridLayout(2, 1));
 			content.add(textPanel, BorderLayout.NORTH);

@@ -9,18 +9,18 @@ import javax.swing.JOptionPane;
 import oldCode.Customer;
 import oldCode.Menu;
 
-public class DeleteAccountListener implements ActionListener{
-	
+public class DeleteAccountListener implements ActionListener {
+
 	JFrame f;
 	Menu menu;
 	Customer customer;
-	
-	public DeleteAccountListener(Menu menu, Customer customer){
-		this.menu=menu;
-		this.customer=customer;
-		
+
+	public DeleteAccountListener(Menu menu, Customer customer) {
+		this.menu = menu;
+		this.customer = customer;
+
 	}
-	
+
 	public void actionPerformed(ActionEvent ae) {
 		boolean found = true;
 

@@ -19,34 +19,33 @@ import oldCode.CustomerCurrentAccount;
 import oldCode.CustomerDepositAccount;
 import oldCode.Menu;
 
-public class BankChargesListener implements ActionListener{
-	
+public class BankChargesListener implements ActionListener {
+
 	JFrame f;
 	Menu menu;
 	Customer customer;
 	CustomerAccount acc;
-	
-	public BankChargesListener(Menu menu, Customer customer, CustomerAccount acc){
-		this.menu=menu;
-		this.customer=customer;
-		this.acc=acc;
-		
+
+	public BankChargesListener(Menu menu, Customer customer, CustomerAccount acc) {
+		this.menu = menu;
+		this.customer = customer;
+		this.acc = acc;
+
 	}
-	
+
 	public void actionPerformed(ActionEvent ae) {
 
-		boolean loop = true;
+		boolean applyCharge = true;
 
 		boolean found = false;
 
 		if (menu.getCustomerList().isEmpty()) {
-			JOptionPane.showMessageDialog(f, "There are no customers yet!", "Oops!",
-					JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(f, "There are no customers yet!", "Oops!", JOptionPane.INFORMATION_MESSAGE);
 			f.dispose();
 			menu.admin();
 
 		} else {
-			while (loop) {
+			while (applyCharge) {
 				Object customerID = JOptionPane.showInputDialog(f,
 						"Customer ID of Customer You Wish to Apply Charges to:");
 
@@ -55,7 +54,7 @@ public class BankChargesListener implements ActionListener{
 					if (aCustomer.getCustomerID().equals(customerID)) {
 						found = true;
 						customer = aCustomer;
-						loop = false;
+						applyCharge = false;
 					}
 				}
 
@@ -63,15 +62,14 @@ public class BankChargesListener implements ActionListener{
 					int reply = JOptionPane.showConfirmDialog(null, null, "User not found. Try again?",
 							JOptionPane.YES_NO_OPTION);
 					if (reply == JOptionPane.YES_OPTION) {
-						loop = true;
+						applyCharge = true;
 					} else if (reply == JOptionPane.NO_OPTION) {
 						f.dispose();
-						loop = false;
+						applyCharge = false;
 
 						menu.admin();
 					}
 				} else {
-					//f.dispose();
 					f = new JFrame("Administrator Menu");
 					f.setSize(400, 300);
 					f.setLocation(200, 200);
@@ -124,22 +122,20 @@ public class BankChargesListener implements ActionListener{
 
 								if (acc instanceof CustomerDepositAccount) {
 
-									JOptionPane.showMessageDialog(f,
-											"25" + euro + " deposit account fee aplied.", "",
+									JOptionPane.showMessageDialog(f, "25" + euro + " deposit account fee aplied.", "",
 											JOptionPane.INFORMATION_MESSAGE);
 									acc.setBalance(acc.getBalance() - 25);
-									JOptionPane.showMessageDialog(f, "New balance = " + acc.getBalance(),
-											"Success!", JOptionPane.INFORMATION_MESSAGE);
+									JOptionPane.showMessageDialog(f, "New balance = " + acc.getBalance(), "Success!",
+											JOptionPane.INFORMATION_MESSAGE);
 								}
 
 								if (acc instanceof CustomerCurrentAccount) {
 
-									JOptionPane.showMessageDialog(f,
-											"15" + euro + " current account fee aplied.", "",
+									JOptionPane.showMessageDialog(f, "15" + euro + " current account fee aplied.", "",
 											JOptionPane.INFORMATION_MESSAGE);
 									acc.setBalance(acc.getBalance() - 25);
-									JOptionPane.showMessageDialog(f, "New balance = " + acc.getBalance(),
-											"Success!", JOptionPane.INFORMATION_MESSAGE);
+									JOptionPane.showMessageDialog(f, "New balance = " + acc.getBalance(), "Success!",
+											JOptionPane.INFORMATION_MESSAGE);
 								}
 
 								f.dispose();

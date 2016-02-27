@@ -19,23 +19,22 @@ import oldCode.Customer;
 import oldCode.CustomerAccount;
 import oldCode.Menu;
 
-public class StatementListener implements ActionListener{
-	
+public class StatementListener implements ActionListener {
+
 	JFrame f;
 	Menu menu;
 	Customer e;
 	CustomerAccount acc;
 	Container content;
-	
-	public StatementListener(Menu menu, CustomerAccount acc, Customer e){
-		this.acc=acc;
-		this.e=e;
-		this.menu=menu;
-		
+
+	public StatementListener(Menu menu, CustomerAccount acc, Customer e) {
+		this.acc = acc;
+		this.e = e;
+		this.menu = menu;
+
 	}
-	
+
 	public void actionPerformed(ActionEvent ae) {
-		//f.dispose();
 		f = new JFrame("Customer Menu");
 		f.setSize(400, 600);
 		f.setLocation(200, 200);
@@ -70,13 +69,10 @@ public class StatementListener implements ActionListener{
 		}
 
 		textPanel.add(textArea);
-		//content.removeAll();
 
 		Container content = f.getContentPane();
 		content.setLayout(new GridLayout(1, 1));
-		// content.add(label1);
 		content.add(textPanel);
-		// content.add(returnPanel);
 
 		returnButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {

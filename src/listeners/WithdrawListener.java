@@ -73,19 +73,9 @@ public class WithdrawListener implements ActionListener{
 		}
 		if (on == true) {
 			String balanceTest = JOptionPane.showInputDialog(f,
-					"Enter amount you wish to withdraw (max 500):");// the
-																	// isNumeric
-																	// method
-																	// tests
-																	// to
-																	// see
-																	// if
-																	// the
-																	// string
-																	// entered
-																	// was
-																	// numeric.
-			if (menu.isNumeric(balanceTest)) {
+					"Enter amount you wish to withdraw (max 500):");// the isNumeric method tests to see if the string entered was numeric
+			
+			if (Menu.isNumeric(balanceTest)) {
 
 				withdraw = Double.parseDouble(balanceTest);
 				loop = false;

@@ -42,7 +42,6 @@ public class NavigateListener implements ActionListener{
 	}
 	
 	public void actionPerformed(ActionEvent ae) {
-		//f.dispose();
 
 		if (menu.getCustomerList().isEmpty()) {
 			JOptionPane.showMessageDialog(null, "There are currently no customers to display. ");

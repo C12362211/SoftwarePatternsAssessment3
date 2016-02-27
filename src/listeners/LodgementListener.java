@@ -30,23 +30,23 @@ public class LodgementListener implements ActionListener{
 	}
 	
 	public void actionPerformed(ActionEvent ae) {
-		boolean loop = true;
+		boolean pinEntry = true;
 		boolean on = true;
 		double balance = 0;
 
 		if (acc instanceof CustomerCurrentAccount) {
 			int count = 3;
 			int checkPin = ((CustomerCurrentAccount) acc).getAtm().getPin();
-			loop = true;
+			pinEntry = true;
 
-			while (loop) {
+			while (pinEntry) {
 				if (count == 0) {
 					JOptionPane.showMessageDialog(f,
 							"Pin entered incorrectly 3 times. ATM card locked.", "Pin",
 							JOptionPane.INFORMATION_MESSAGE);
 					((CustomerCurrentAccount) acc).getAtm().setValid(false);
 					menu.customer(e);
-					loop = false;
+					pinEntry = false;
 					on = false;
 				}
 
@@ -55,7 +55,7 @@ public class LodgementListener implements ActionListener{
 
 				if (on) {
 					if (checkPin == i) {
-						loop = false;
+						pinEntry = false;
 						JOptionPane.showMessageDialog(f, "Pin entry successful", "Pin",
 								JOptionPane.INFORMATION_MESSAGE);
 
@@ -71,22 +71,11 @@ public class LodgementListener implements ActionListener{
 
 		}
 		if (on == true) {
-			String balanceTest = JOptionPane.showInputDialog(f, "Enter amount you wish to lodge:");// the
-																									// isNumeric
-																									// method
-																									// tests
-																									// to
-																									// see
-																									// if
-																									// the
-																									// string
-																									// entered
-																									// was
-																									// numeric.
+			String balanceTest = JOptionPane.showInputDialog(f, "Enter amount you wish to lodge:");// the isNumeric method tests to see if the string entered was numeric
 			if (Menu.isNumeric(balanceTest)) {
 
 				balance = Double.parseDouble(balanceTest);
-				loop = false;
+				pinEntry = false;
 
 			} else {
 				JOptionPane.showMessageDialog(f, "You must enter a numerical value!", "Oops!",
